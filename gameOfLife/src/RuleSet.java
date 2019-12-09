@@ -1,3 +1,7 @@
+import structures.Cell;
+import structures.Grid;
+import structures.GridIterator;
+
 public class RuleSet {
 
     /**

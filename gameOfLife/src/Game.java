@@ -1,3 +1,5 @@
+import structures.Grid;
+
 public class Game {
 
     private Grid gameGrid;
