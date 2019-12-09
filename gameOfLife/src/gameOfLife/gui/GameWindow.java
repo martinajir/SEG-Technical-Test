@@ -59,8 +59,11 @@ public class GameWindow {
     }
 
 
+    /**
+     * Refresh the whole game
+     */
     private void refresh(){
-        f.getContentPane().removeAll();
+        f.getContentPane().removeAll(); //remove all elements from frame
 
         for(int y = c-1; y >=0; y-- ){
             for(int x = 0; x < r; x++){
