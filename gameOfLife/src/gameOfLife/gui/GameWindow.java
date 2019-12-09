@@ -1,4 +1,5 @@
 package gameOfLife.gui;
+
 import gameOfLife.Game;
 import gameOfLife.rules.RuleSet;
 import gameOfLife.structures.Grid;
