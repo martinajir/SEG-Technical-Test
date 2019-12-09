@@ -1,8 +1,6 @@
 public class RuleSet {
 
-    public RuleSet() {
-
-    }
+    public RuleSet() { }
 
     public Grid applyRules(Grid gameGrid){
         Grid newGrid = new Grid(gameGrid.getMaxX(), gameGrid.getMaxY());

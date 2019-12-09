@@ -74,7 +74,6 @@ public class Grid {
             }
             System.out.println();
         }
-
     }
 
     public int getMaxX() {
