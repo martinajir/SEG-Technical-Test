@@ -5,6 +5,7 @@ import gameOfLife.rules.RuleSet;
 import gameOfLife.structures.Grid;
 
 public class Game {
+    public static final int STARTER_CELLS_COUNT = 15;
 
     private Grid gameGrid;
     private RuleSet ruleSet;

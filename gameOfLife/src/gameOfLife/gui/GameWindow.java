@@ -1,4 +1,5 @@
 package gameOfLife.gui;
+import gameOfLife.Game;
 import gameOfLife.rules.RuleSet;
 import gameOfLife.structures.Grid;
 
@@ -16,24 +17,34 @@ public class GameWindow {
     JLabel steps;
     int stepCount = 0;
     JButton next;
+    JButton restart;
 
     public GameWindow(int r, int c){
+        //initialise game grid and rules
         this.r = r;
         this.c = c;
-        gameGrid = new Grid(r,c, 15);
+        gameGrid = new Grid(r,c, Game.STARTER_CELLS_COUNT);
         ruleSet = new RuleSet();
-        System.out.println("step 0");
+        System.out.println("initial grid");
         gameGrid.printGrid();
 
+        //initialise main frame
         f = new JFrame();
         f.setSize(500,500);
-        f.setLayout(new GridLayout(r+1,c));//using no layout managers
+        f.setLayout(new GridLayout(r+1,c));
 
+        //register buttons
         next = new JButton(">>");
         next.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 play();
                 refresh();
+            }
+        });
+        restart = new JButton("Restart");
+        restart.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                restartGame();
             }
         });
 
@@ -58,12 +69,22 @@ public class GameWindow {
                     b.setText("*");
                 }
                 b.setEnabled(false);
+                b.setFont(new Font("Arial", Font.BOLD, 40));
                 f.add(b);
             }
         }
         steps = new JLabel("Steps: " + stepCount);
         f.add(steps);
         f.add(next);
+        f.add(restart);
         f.setVisible(true);//making the frame visible
+    }
+
+    public void restartGame(){
+        gameGrid = new Grid(r,c, Game.STARTER_CELLS_COUNT);
+        stepCount = 0;
+        System.out.println("initial grid");
+        gameGrid.printGrid();
+        refresh();
     }
 }
