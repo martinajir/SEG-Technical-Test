@@ -35,6 +35,10 @@ public class Grid implements Iterable {
         }
     }
 
+    /**
+     * initialise the grid with some random live cells
+     * @param count is the number of live cells desired in a grid
+     */
     private void addRandomCells(int count){
         for(int i = 0; i < count; i++) {
             int randX = rand.nextInt(maxX);
@@ -43,6 +47,12 @@ public class Grid implements Iterable {
         }
     }
 
+    /**
+     * Return the number of live cells neighbouring a given cell
+     * @param x x coordinate of given cell
+     * @param y y coordinate of given cell
+     * @return number of alive neighbours
+     */
     public int getNeighbourCount(int x, int y){
         int[] xModifiers = {0,1,1,1,0,-1,-1,-1}; //clockwise starting from 12
         int[] yModifiers = {1,1,0,-1,-1,-1,0,1};
@@ -61,10 +71,16 @@ public class Grid implements Iterable {
         return neighbourCount;
     }
 
+    /**
+     * Evaluate if given coordinates are valid
+     */
     private boolean isValid(int x, int y){
         return x >= 0 && y >= 0 && x < maxX && y < maxY;
     }
 
+    /**
+     * Print grid with 0,0 coordinate in bottom left corner
+     */
     public void printGrid(){
         for(int y = maxY-1; y >=0; y-- ){
             for(int x = 0; x < maxX; x++){
@@ -93,6 +109,9 @@ public class Grid implements Iterable {
 
 }
 
+/**
+ * Iterator that allows easier access to the internal 2-dimensional array
+ */
 class GridIterator implements Iterator {
     int currentX;
     int currentY;

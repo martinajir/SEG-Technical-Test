@@ -1,7 +1,10 @@
 public class RuleSet {
 
-    public RuleSet() { }
-
+    /**
+     * Iterate through grid and change each cell according to rules
+     * @param gameGrid current game grid
+     * @return game grid at the next step of the game
+     */
     public Grid applyRules(Grid gameGrid){
         Grid newGrid = new Grid(gameGrid.getMaxX(), gameGrid.getMaxY());
         GridIterator gridIterator = (GridIterator) gameGrid.iterator();
@@ -20,6 +23,12 @@ public class RuleSet {
         return newGrid;
     }
 
+    /**
+     * Evaluate if a given cell will survive according to supplied rules
+     * @param isAlive is true if this cell contains life
+     * @param neighbourCount is the number of neighbours of this cell
+     * @return true if cell will survive to the next step
+     */
     private boolean survives(boolean isAlive, int neighbourCount) {
         if ((neighbourCount == 2 || neighbourCount == 3) && isAlive) {
             return true;

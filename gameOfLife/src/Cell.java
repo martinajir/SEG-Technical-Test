@@ -12,6 +12,9 @@ public class Cell {
         this.life = life;
     }
 
+    /**
+     * whether cell is inhabited or not
+     */
     public boolean hasLife() {
         return life;
     }
