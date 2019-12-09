@@ -1,4 +1,8 @@
-import structures.Grid;
+package gameOfLife;
+
+import gameOfLife.gui.GameWindow;
+import gameOfLife.rules.RuleSet;
+import gameOfLife.structures.Grid;
 
 public class Game {
 
@@ -6,7 +10,8 @@ public class Game {
     private RuleSet ruleSet;
 
     public static void main(String[] args){
-        new Game().play(5);
+        new GameWindow(5,5);
+        //new Game().play(5);
     }
 
     public void play(int numOfSteps){

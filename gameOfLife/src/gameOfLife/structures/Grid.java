@@ -1,4 +1,4 @@
-package structures;
+package gameOfLife.structures;
 
 import java.util.Iterator;
 import java.util.Random;

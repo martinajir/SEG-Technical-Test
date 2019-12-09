@@ -1,11 +1,13 @@
-import structures.Cell;
-import structures.Grid;
-import structures.GridIterator;
+package gameOfLife.rules;
+
+import gameOfLife.structures.Cell;
+import gameOfLife.structures.Grid;
+import gameOfLife.structures.GridIterator;
 
 public class RuleSet {
 
     /**
-     * Iterate through grid and change each cell according to rules
+     * Iterate through grid and change each cell according to gameOfLife.rules
      * @param gameGrid current game grid
      * @return game grid at the next step of the game
      */
@@ -28,7 +30,7 @@ public class RuleSet {
     }
 
     /**
-     * Evaluate if a given cell will survive according to supplied rules
+     * Evaluate if a given cell will survive according to supplied gameOfLife.rules
      * @param isAlive is true if this cell contains life
      * @param neighbourCount is the number of neighbours of this cell
      * @return true if cell will survive to the next step

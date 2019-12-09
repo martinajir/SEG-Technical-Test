@@ -1,6 +1,4 @@
-package structures;
-
-import java.util.List;
+package gameOfLife.structures;
 
 public class Cell {
 
