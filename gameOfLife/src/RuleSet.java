@@ -4,7 +4,7 @@ public class RuleSet {
 
     }
 
-    public Grid applyRules(Grid gameGrid) throws CloneNotSupportedException{
+    public Grid applyRules(Grid gameGrid){
         Grid newGrid = new Grid(gameGrid.getMaxX(), gameGrid.getMaxY());
         for(int x = 0; x < gameGrid.getMaxX(); x++){
             for(int y = 0; y < gameGrid.getMaxY();y++) {
