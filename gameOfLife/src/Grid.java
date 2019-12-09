@@ -1,35 +1,38 @@
+import java.util.Iterator;
 import java.util.Random;
 
-public class Grid {
+public class Grid implements Iterable {
     private Cell[][] cells;
     private int maxX;
     private int maxY;
 
     private Random rand = new Random();
 
+    public Iterator iterator() {
+        return new GridIterator(this);
+    }
+
     public Grid(int maxX, int maxY){
         this.maxX = maxX;
         this.maxY = maxY;
         cells = new Cell[maxX][maxY];
-
-        for(int x = 0; x < maxX; x++){
-            for(int y = 0; y < maxY; y++){
-                cells[x][y] = new Cell(false);
-            }
-        }
+        initialiseGrid(maxX,maxY);
     }
 
     public Grid(int maxX, int maxY, int starterCellsCount){
         this.maxX = maxX;
         this.maxY = maxY;
         cells = new Cell[maxX][maxY];
+        initialiseGrid(maxX,maxY);
+        addRandomCells(starterCellsCount);
+    }
 
+    private void initialiseGrid(int maxX, int maxY){
         for(int x = 0; x < maxX; x++){
             for(int y = 0; y < maxY; y++){
-                cells[x][y] = new Cell(false);
+                cells[x][y] = new Cell(x,y,false);
             }
         }
-        addRandomCells(starterCellsCount);
     }
 
     private void addRandomCells(int count){
@@ -88,5 +91,37 @@ public class Grid {
         return cells[x][y];
     }
 
+}
 
+class GridIterator implements Iterator {
+    int currentX;
+    int currentY;
+    int maxX;
+    int maxY;
+    Grid grid;
+
+    public GridIterator (Grid grid) {
+        this.grid = grid;
+        currentX = 0;
+        currentY = 0;
+        maxX = grid.getMaxX();
+        maxY = grid.getMaxY();
+    }
+
+    public boolean hasNext() {
+        return (currentX+1 < maxX) || (currentY+1 < maxY);
+    }
+
+    public Cell next() {
+        int oldX = currentX;
+        int oldY = currentY;
+        if(currentY+1 < maxY){
+            currentY++;
+        }
+        else {
+            currentY = 0;
+            currentX++;
+        }
+        return grid.get(oldX,oldY);
+    }
 }

@@ -4,17 +4,19 @@ public class RuleSet {
 
     public Grid applyRules(Grid gameGrid){
         Grid newGrid = new Grid(gameGrid.getMaxX(), gameGrid.getMaxY());
-        for(int x = 0; x < gameGrid.getMaxX(); x++){
-            for(int y = 0; y < gameGrid.getMaxY();y++) {
-                boolean willSurvive = survives(gameGrid.get(x, y).hasLife(), gameGrid.getNeighbourCount(x, y));
-                if (willSurvive) {
-                    newGrid.get(x, y).setLife(true);
-                } else {
-                    newGrid.get(x, y).setLife(false);
-                }
+        GridIterator gridIterator = (GridIterator) gameGrid.iterator();
+        while(gridIterator.hasNext()){
+            Cell thisCell = gridIterator.next();
+            int x = thisCell.getX();
+            int y = thisCell.getY();
+            boolean willSurvive = survives(thisCell.hasLife(), gameGrid.getNeighbourCount(x, y));
+            if (willSurvive) {
+                newGrid.get(x, y).setLife(true);
+            } else {
+                newGrid.get(x, y).setLife(false);
             }
-
         }
+
         return newGrid;
     }
 
