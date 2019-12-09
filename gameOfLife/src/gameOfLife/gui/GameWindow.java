@@ -8,6 +8,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This is the GUI for the game containing a simple game grid, a button to go forward one step and a button to restart
+ */
 public class GameWindow {
     JFrame f;
     Grid gameGrid;
@@ -51,6 +54,9 @@ public class GameWindow {
         refresh();
     }
 
+    /**
+     * Do one iteration of gameplay
+     */
     public void play(){
         System.out.println("step " + stepCount);
         gameGrid = ruleSet.applyRules(gameGrid);
@@ -58,13 +64,13 @@ public class GameWindow {
         stepCount++;
     }
 
-
     /**
-     * Refresh the whole game
+     * Refresh the whole frame - repaint the game grid and labels
      */
     private void refresh(){
         f.getContentPane().removeAll(); //remove all elements from frame
 
+        //repaint game grid
         for(int y = c-1; y >=0; y-- ){
             for(int x = 0; x < r; x++){
                 JButton b = new JButton("");
@@ -76,13 +82,18 @@ public class GameWindow {
                 f.add(b);
             }
         }
+
+        //repaint labels and buttons
         steps = new JLabel("Steps: " + stepCount);
         f.add(steps);
         f.add(next);
         f.add(restart);
-        f.setVisible(true);//making the frame visible
+        f.setVisible(true);//make the frame visible
     }
 
+    /**
+     * Re-instantiate the game grid and repaint the frame
+     */
     public void restartGame(){
         gameGrid = new Grid(r,c, Game.STARTER_CELLS_COUNT);
         stepCount = 0;
